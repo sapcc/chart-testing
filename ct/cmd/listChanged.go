@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/spf13/pflag"
 	"os"
 
 	"github.com/MakeNowJust/heredoc"
@@ -38,6 +39,7 @@ func newListChangedCmd() *cobra.Command {
 
 	flags := cmd.Flags()
 	addCommonFlags(flags)
+	addListChangedFlags(flags)
 	return cmd
 }
 
@@ -57,4 +59,8 @@ func listChanged(cmd *cobra.Command, args []string) {
 	for _, dir := range chartDirs {
 		fmt.Println(dir)
 	}
+}
+
+func addListChangedFlags(flags *pflag.FlagSet) {
+	flags.Bool("include-subcharts", false, heredoc.Doc("Whether to also include subcharts. (default: false)"))
 }
