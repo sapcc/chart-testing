@@ -685,8 +685,6 @@ func (t *Testing) ComputeChangedChartDirectories() ([]string, error) {
 			if !util.StringSliceContains(changedChartDirs, chartDir) {
 				changedChartDirs = append(changedChartDirs, chartDir)
 			}
-		} else {
-			fmt.Printf("Directory '%s' is no chart directory. Skipping...", chartDir)
 		}
 
 		// Also include sub charts.
@@ -696,8 +694,6 @@ func (t *Testing) ComputeChangedChartDirectories() ([]string, error) {
 				if !util.StringSliceContains(changedChartDirs, subChartDir) {
 					changedChartDirs = append(changedChartDirs, subChartDir)
 				}
-			} else {
-				fmt.Printf("Directory '%s' is no chart directory. Skipping...", subChartDir)
 			}
 		}
 
